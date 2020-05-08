@@ -1,1 +1,507 @@
-<html></html>
+<html>
+
+<style>
+  
+  *, *:before, *:after { box-sizing: border-box; }
+
+html, body {
+  background-color: #1a1a1a;
+  height: 100%;
+}
+
+html, body {
+  background-color: #1a1a1a;
+  height: 100%;
+}
+
+.lamp-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.lamp {
+  width: 191.83px;
+  height: 115.09px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.lamp-head {
+  width: 119px;
+  height: 70px;
+  margin: 0 auto -48px;
+  border-radius: 100% 100% 0 0;
+  visibility: hidden;
+  overflow: hidden;
+  z-index: 1;
+  position: relative;
+
+  .lamp-head-inner {
+    display: block;
+    width: 100%;
+    height: 35px;
+    background-color: #e1b44f;
+    visibility: visible;
+    overflow: hidden;
+    transform: rotate(0);
+
+    &:before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 75px;
+      background-color: #fdebb4;
+      position: absolute;
+      right: 6px;
+      top: -15px;
+      transform: rotate(-42deg);
+    }
+  }
+
+  .lamp-head-shadow {
+    background-color: #efcd62;
+    border-radius: 0 100% 0 100%;
+    height: 39px;
+    left: 19px;
+    position: relative;
+    top: -6px;
+    -webkit-transform: rotate(4deg);
+    transform: rotate(4deg);
+    width: 85px;
+  }
+
+  @at-root {
+    .lamp-head-handle {
+      width: 12px;
+      height: 10px;
+      background-color: #eace63;
+      border-right: 1px solid #fff0b8;
+      position: absolute;
+      transform: translateX(-50%);
+      left: 50%;
+      top: -9px;
+    }
+
+    .lamp-head-handle-circle {
+      width: 25px;
+      height: 25px;
+      border-radius: 100%;
+      background-color: #ffeaa9;
+      position: absolute;
+      top: -23px;
+      left: -7px;
+      overflow: hidden;
+    }
+
+    .lamp-head-handle-circle-shadow {
+      display: block;
+      width: 21px;
+      height: 21px;
+      background-color: #eace63;
+      position: absolute;
+      bottom: -3px;
+      left: -2px;
+      border-radius: 0 0 0 100%;
+      border-left: solid 3px #c7913b;
+    }
+
+    .lamp-head-handle-circle-highlight {
+      background-color: #fbebad;
+      width: 9px;
+      height: 9px;
+      border-radius: 100%;
+      position: absolute;
+      top: 6px;
+      left: 11px;
+
+      &:after {
+        content: '';
+        display: block;
+        background: transparent;
+        border-top: solid 3px #fff;
+        border-radius: 100%;
+        width: 12px;
+        height: 11px;
+        transform: rotate(40deg) translate(-2px, -2px);
+      }
+    }
+  }
+}
+
+.lamp-body {
+  background-color: #e2b550;
+  border-radius: 100%;
+  height: 0;
+  overflow: hidden;
+  position: relative;
+  width: 191.83px;
+  height: 115.09px;
+  display: block;
+  margin: 0 auto;
+}
+
+.lamp-body-highlight {
+  background-color: #efce62;
+  width: 99%;
+  height: 88%;
+  border-radius: 100%;
+  transform: rotate(5deg);
+  position: absolute;
+  left: 20px;
+  top: -6px;
+}
+
+.lamp-body-highlight-circle {
+  display: block;
+  width: 99px;
+  height: 60px;
+  background-color: #ffecb4;
+  border-radius: 100%;
+  margin-top: 21px;
+  margin-left: 62px;
+  transform: rotate(-7deg);
+  position: relative;
+  z-index: 1;
+}
+
+.lamp-body-shadow {
+  background-color: #efce62;
+  width: 99%;
+  height: 88%;
+  border-radius: 100%;
+  transform: rotate(5deg);
+  position: absolute;
+  left: 20px;
+  top: -6px;
+}
+
+.lamp-nozzle-shadow {
+  width: 182px;
+  height: 72px;
+  position: absolute;
+  border-radius: 100%;
+  border-bottom: 10px solid #e2b550;
+  transform: rotate(-25deg);
+  top: 48px;
+  right: -66px;
+}
+
+.lamp-nozzle-main {
+  @extend .lamp-nozzle-shadow;
+  border-bottom-color: #efcd62;
+  top: 38px;
+  right: -73px;
+  transform: rotate(-20deg);
+  border-bottom-width: 24px;
+  height: 70px;
+  z-index: 1;
+
+  &:before {
+    content: '';
+    display: block;
+    width: 85px;
+    height: 12px;
+    background-color: #efcd62;
+    transform: skew(34deg) rotate(-15deg);
+    border-radius: 0 56px 0;
+    position: absolute;
+    right: -21px;
+    top: 44px;
+  }
+}
+
+.lamp-nozzle-highlight {
+  @extend .lamp-nozzle-main;
+  border-bottom-color: #fdebb4;
+  z-index: -1;
+  top: 21px;
+  right: -67px;
+  transform: rotate(-12deg);
+
+  &:before {
+    content: '';
+    display: block;
+    background-color: #fdebb4;
+  }
+}
+
+.lamp-nozzle-opening {
+  display: block;
+  background-color: #fff;
+  width: 19px;
+  height: 11px;
+  position: absolute;
+  right: -83px;
+  top: 36px;
+  border-radius: 100%;
+  transform: skew(-6deg) rotateX(61deg) rotateY(12deg);
+  z-index: 3;
+}
+
+.lamp-handle-start {
+  background-color: #e2b550;
+    width: 17px;
+    height: 16px;
+    position: absolute;
+    top: 41px;
+    transform: rotate(-55deg);
+    left: -4px;
+
+
+  &:before, &:after {
+    content: '';
+    display: block;
+    position: absolute;
+  }
+
+  &:before {
+    width: 29px;
+    height: 22px;
+    border-radius: 100%;
+    border-left: 7px #e2b550 solid;
+    position: absolute;
+    top: -1px;
+    left: 10px;
+    transform: rotate(-30deg);
+  }
+
+  &:after {
+    width: 33px;
+    height: 23px;
+    border-radius: 100%;
+    border-right: 9px #e2b550 solid;
+    position: absolute;
+    top: -4px;
+    left: -25px;
+    transform: rotate(35deg);
+  }
+}
+
+.lamp-handle-main-shadow {
+  width: 88px;
+  height: 37px;
+  position: absolute;
+  top: 17px;
+  border-top: 11px solid #e2b550;
+  border-radius: 100% 0;
+  left: -81px;
+  transform: rotate(40deg);
+
+  &:before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: #e2b550;
+    position: absolute;
+    right: 6px;
+    top: -17px;
+    transform: skew(-52deg);
+  }
+}
+
+.lamp-handle-second-shadow {
+  width: 59px;
+  height: 71px;
+  position: absolute;
+  top: 10px;
+  border-left: 8px solid #e2b550;
+  border-radius: 100%;
+  left: -98px;
+  transform: rotate(71deg);
+}
+
+.lamp-handle-second-shadow2 {
+  width: 61px;
+  height: 69px;
+  position: absolute;
+  top: 16px;
+  border-bottom: 21px solid #e2b550;
+  border-radius: 100%;
+  left: -101px;
+  transform: rotate(71deg);
+
+  &:before, &:after {
+    content: '';
+    display: block;
+  }
+
+  &:before {
+    display: block;
+    width: 40px;
+    height: 36px;
+    border-bottom: 7px solid #e5bb54;
+    border-radius: 100%;
+    transform: rotate(64deg);
+    position: absolute;
+    left: -2px;
+    top: 11px;
+  }
+
+  &:after {
+    display: block;
+    width: 65px;
+    height: 37px;
+    border-bottom: 16px solid #e2b550;
+    border-radius: 100% 0;
+    transform: rotate(-40deg) skew(0);
+    position: absolute;
+    left: 27px;
+    top: 11px;
+  }
+}
+
+.lamp-handle-second-shadow3 {
+  width: 118px;
+  height: 59px;
+  position: absolute;
+  top: 83px;
+  border-right: 31px solid #e2b550;
+  border-radius: 100%;
+  left: -113px;
+  transform: rotate(-12deg);
+
+  &:before, &:after {
+    content: '';
+    display: block;
+  }
+
+  &:before {
+    width: 29px;
+    height: 49px;
+    transform: skew(21deg) rotate(68deg);
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    border-top: 16px solid #e2b550;
+    border-radius: 100%;
+  }
+
+  &:after {
+    width: 33px;
+    height: 23px;
+    transform: rotate(23deg);
+    position: absolute;
+    top: -3px;
+    right: -25px;
+    border-radius: 100%;
+    border-top: 10px solid #1a1a1a;
+  }
+}
+
+.lamp-handle-main-highlight {
+  width: 89px;
+  height: 49px;
+  position: absolute;
+  top: 6px;
+  border-top: 17px solid #fdebb4;
+  border-radius: 100% 0;
+  left: -86px;
+  transform: rotate(41deg);
+  z-index: -1;
+}
+
+.lamp-handle-main-highlight2 {
+  width: 96px;
+  height: 53px;
+  position: absolute;
+  top: 7px;
+  border-top: 13px solid #fdebb3;
+  border-radius: 100%;
+  left: -110px;
+  transform: rotate(11deg);
+  z-index: -2;
+
+  &:before {
+    content: '';
+    display: block;
+    width: 46px;
+    height: 58px;
+    border-radius: 100%;
+    border-left: 20px #fdebb3 solid;
+    position: absolute;
+    top: -3px;
+    left: 6px;
+    transform: rotate(7deg);
+  }
+}
+
+
+.lamp-foot {
+  border-bottom: 12px solid #e2b550;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  height: 0;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -7px;
+  z-index: 2;
+  position: relative;
+
+  &:before {
+    content: '';
+    display: block;
+    border-top: 15px #efcf62 solid;
+    border-radius: 100%;
+    height: 33px;
+    left: -23px;
+    position: relative;
+    width: 119px;
+    margin-bottom: -45px;
+    top: 4px;
+  }
+}
+
+  </style>
+  
+  
+<div id="genie-bottle">
+ 
+  <div class="lamp-wrap">
+  <div class="lamp">
+    <div class="lamp-head">
+      <div class="lamp-head-inner">
+        <div class="lamp-head-shadow"></div>
+
+      </div>
+    </div>
+
+    <div class="lamp-head-handle">
+      <div class="lamp-head-handle-circle">
+        <div class="lamp-head-handle-circle-shadow"></div>
+        <div class="lamp-head-handle-circle-highlight"></div>
+      </div>
+    </div>
+
+    <div class="lamp-body">
+      <div class="lamp-body-highlight"></div>
+      <div class="lamp-body-highlight-circle"></div>
+    </div>
+
+    <div class="lamp-nozzle-shadow"></div>
+    <div class="lamp-nozzle-main"></div>
+    <div class="lamp-nozzle-highlight"></div>
+    <div class="lamp-nozzle-opening"></div>
+
+    <div class="lamp-handle-start"></div>
+    <div class="lamp-handle-main-highlight"></div>
+    <div class="lamp-handle-main-highlight2"></div>
+    <div class="lamp-handle-main-shadow"></div>
+    <div class="lamp-handle-second-shadow"></div>
+    <div class="lamp-handle-second-shadow2"></div>
+    <div class="lamp-handle-second-shadow3"></div>
+
+    <div class="lamp-foot"></div>
+
+  </div>
+</div>
+  
+  </div>
+
+
+
+
+</html>
